@@ -20,3 +20,12 @@ function switchTheme(e) {
 }
 
 toggleSwitch.addEventListener('change', switchTheme, false);
+
+
+$(window).on("scroll touchmove mousewheel wheel", function(event) {
+  if ($(window).scrollTop() > 0) {
+    $("#bar").addClass("fixed");
+  } else {
+    $("#bar").removeClass("fixed");
+  }
+});

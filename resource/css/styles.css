@@ -1,5 +1,6 @@
 @import url('fonts.css');
 @import url('aos.css');
+@import url('swiper.min.css');
 
 
 /* Global Styles */
@@ -20,9 +21,11 @@
     --deselect-color : #878b90;
     --highlight-color: #007aff;
     --bg-color: #000;
+    --nav-color : #555;
     --logo-color : #fff;
     --bar-color : #131313;
     --btn-color: #fffc30;
+    --white-color : #fff;
 }
 
 [data-theme="light"] {
@@ -30,6 +33,7 @@
     --secondary-color: #131313;
     --deselect-color : #878b90;
     --logo-color : #0084ff;
+    --nav-color : #333;
     --bg-color: #fff;
     --bar-color : #fff;
 }
@@ -60,10 +64,14 @@ body{
 }
 
 section{
-    padding: 72px 0;
-    min-height: 100vh;
+    /* padding: 72px 0; */
+    min-height: 50vh;
     overflow:hidden;
     position : relative;
+}
+
+.hero {
+    height : 65vh;
 }
 
 .container {
@@ -92,17 +100,45 @@ a.disabled {
 p{
     font-size: 1.5rem;
 }
+.btn {
+    display: inline-block;
+    font-size: 0.7rem;
+}
+
+.btn_more {
+    top: 20px;
+    padding : 0 20px;
+    background-color: var(--white-color);
+    color : black;
+    line-height: 35px;
+    margin: auto;
+    cursor: pointer;
+    text-align: center;
+    position: relative;
+}
+
+.arrow {
+    -webkit-mask-image: url(/resource/img/common/arrow.svg);
+    mask-image: url(/resource/img/common/arrow.svg);
+    background-color: black;
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
+    width: 6px;
+    height: 9px;
+}
 
 .logo {
     -webkit-mask-image: url(/resource/img/common/logo.svg);
     mask-image: url(/resource/img/common/logo.svg);
     background-color: var(--logo-color);
+    -webkit-mask-repeat: no-repeat;
+    mask-repeat: no-repeat;
     width: 8rem;
     height: 1.875rem;
     fill: var(--main-color);
     background-size: contain;
     left: 2.5rem;
-    top: 1.0625rem;
+    top: 1.5rem;
     position :absolute;
     right: auto;
     bottom: auto;
@@ -114,7 +150,7 @@ p{
 
 header .bar {
     text-align: center;
-    background-color: var(--bar-color);
+    /* background-color: var(--bar-color); */
     color : var(--deselect-color);
     padding: 0 11.25rem;
     position: fixed;
@@ -127,8 +163,15 @@ header .bar {
     height : 3.8rem;
 }
 
+.fixed {
+    background-color: var(--bar-color);
+    transition: background-color 0.5s;
+}
+
 .nav>li>a {
     font-size: 0.9rem;
+    color : var(-nav-color);
+    font-weight: 700;
 }
 
 
@@ -185,8 +228,63 @@ header .bar {
   .slider.round:before {
     border-radius: 50%;
   }
-  
 
+  /*  */
+
+  .swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .swiper-slide {
+    text-align: center;
+    /* Center slide text vertically */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    -webkit-justify-content: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    -webkit-align-items: center;
+    align-items: center;
+  }
+
+  [card-image] {
+    background-color: var(--bg-color);
+    background-size: cover;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+  }
+
+
+[card-image] .wrapper {
+    padding-top: 20vh;
+    color : var(--white-color);
+    text-align: left;
+  }
+  
+  [card-image] .wrapper .title {
+    font-size: 3rem;
+    letter-spacing: -.09rem;
+    font-weight: 800;
+    white-space: pre-line;
+    word-break: keep-all;
+}
+
+[card-image] .wrapper .sub {
+    font-size: 1rem;
+    letter-spacing: -.09rem;
+    font-weight: 100;
+}
 /* Media queries */
 
 @media screen and (max-width: 900px) {
@@ -231,7 +329,7 @@ header .bar {
 
     .nav>li>a:hover, .lang a:hover{
         transition: color.5s;
-        color: var(--main-color);
+        color: var(--highlight-color);
     }
 
     header .bar nav .nav>li {
@@ -241,7 +339,7 @@ header .bar {
 
     .nav>li {
         position: relative;
-        padding: 1rem 2.5rem;
+        padding: 1rem 2rem;
         margin: 0;
     }
 
@@ -258,5 +356,9 @@ header .bar {
         font-weight : 300;
         margin-left: 1rem;
         line-height : 2rem;
+    }
+
+    .lang .on {
+        color : var(--highlight-color);
     }
 }
